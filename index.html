@@ -8,12 +8,160 @@
   <link rel="icon" href="public/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet" />
 
+  <style>
+    /* 🌙 Dark mode */
+    body.dark-mode {
+      background-color: #111;
+      color: #eee;
+    }
+
+    /* 🔲 Header with fade-in */
+    .site-header {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo { width: 100px; margin-bottom: 1rem; }
+    .site-header h1 { font-size: 2.5rem; margin: 0.5rem 0; }
+    .site-header p { font-size: 1.2rem; }
+
+    /* Sections */
+    .app-section, .how-to, .founder-note, .fail-gallery {
+      padding: 2rem;
+      margin: 1rem auto;
+      max-width: 800px;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .app-section h2, .how-to h2, .founder-note h2, .fail-gallery h2 {
+      color: green;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: red;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: orange;
+      transform: scale(1.05);
+    }
+
+    /* How-to lists */
+    .how-to ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .how-to li { margin-bottom: 0.5rem; }
+
+    /* Founder note */
+    .founder-note { background-color: black; color: white; border-left: 8px solid orange; border-radius: 8px; }
+    .founder-note p strong { color: black; }
+
+    /* Fail gallery */
+    .fail-gallery { background-color: #fff8e1; color: #000; border-left: 8px solid red; border-radius: 8px; }
+    .fail-gallery ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .fail-gallery li { margin-bottom: 0.5rem; font-style: italic; }
+
+    /* Footer */
+    .site-footer { background-color: green; color: white; text-align: center; padding: 1rem; font-size: 1rem; }
+
+    /* Floating social buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .social-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 2rem;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .social-btn:hover { transform: scale(1.1); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+    .whatsapp { color: green; }
+    .facebook { color: blue; }
+
+    /* 🎨 Floating 3-picture gallery */
+    .floating-gallery {
+      display: flex;
+      gap: 15px;
+      background: white;
+      padding: 15px;
+      border: 4px solid #ff9800;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      z-index: 998;
+      animation: floaty 3s ease-in-out infinite, spinHue 6s linear infinite;
+    }
+    .floating-gallery img {
+      width: 110px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .floating-gallery img:hover {
+      transform: rotate(-3deg) scale(1.15);
+      box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
+    }
+    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes spinHue { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+
+    body.dark-mode .floating-gallery {
+      background: #222;
+      border-color: gold;
+      box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 600px) {
+      .site-header h1 { font-size: 2rem; }
+      .site-header p { font-size: 1rem; }
+      .app-section, .how-to, .founder-note, .fail-gallery { padding: 1rem; margin: 0.5rem; }
+      .app-section h2, .how-to h2, .founder-note h2, .fail-gallery h2 { font-size: 1.5rem; }
+      .btn { width: 100%; text-align: center; padding: 1rem; font-size: 1rem; }
+      .logo { width: 80px; }
+      .how-to ol { padding-left: 1rem; }
+      .site-footer { font-size: 0.9rem; padding: 0.8rem; }
+      .floating-buttons { bottom: 15px; right: 15px; }
+      .social-btn { width: 45px; height: 45px; font-size: 1.8rem; line-height: 45px; }
+      .floating-gallery { display: none; }
+    }
+  </style>
+
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     }
-
     window.onload = function () {
       if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
@@ -50,6 +198,50 @@
       </a>
     </section>
 
+    <section class="how-to" style="animation-delay: 0.7s;">
+      <h2>📘 FixMyRoom प्रयोग गर्ने तरिका</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+        <div style="flex: 1; min-width: 280px;">
+          <h3>📲 Android प्रयोगकर्ता</h3>
+          <ol>
+            <li>APK डाउनलोड गर्नुहोस्</li>
+            <li>एप खोल्नुहोस्</li>
+            <li>“Customer” भूमिका छान्नुहोस्</li>
+            <li>प्रोफाइल भर्नुहोस्</li>
+            <li>Dashboard मा जानुहोस्</li>
+            <li>कामदार खोज्नुहोस्</li>
+            <li>Request पठाउनुहोस्</li>
+          </ol>
+        </div>
+        <div style="flex: 1; min-width: 280px;">
+          <h3>🍎 iPhone प्रयोगकर्ता</h3>
+          <ol>
+            <li>Safari मा Web App खोल्नुहोस्</li>
+            <li>“Customer” भूमिका छान्नुहोस्</li>
+            <li>प्रोफाइल भर्नुहोस्</li>
+            <li>Dashboard मा जानुहोस्</li>
+            <li>कामदार खोज्नुहोस्</li>
+            <li>Request पठाउनुहोस्</li>
+          </ol>
+        </div>
+        <div style="flex: 1; min-width: 280px;">
+          <h3>🧰 कामदार (Painter, Plumber, आदि)</h3>
+          <ol>
+            <li>एप वा Web App खोल्नुहोस्</li>
+            <li>“Worker” भूमिका छान्नुहोस्</li>
+            <li>प्रोफाइल भर्नुहोस्</li>
+            <li>Dashboard मा जानुहोस्</li>
+            <li>कामको सूचना हेर्नुहोस्</li>
+            <li>Request स्वीकार गर्नुहोस्</li>
+            <li>ग्राहकको लोकेशन Map मा हेर्नुहोस्</li>
+            <li>काम गर्न जानुहोस्</li>
+            <li>काम सकिएपछि “Done” क्लिक गर्नुहोस्</li>
+          </ol>
+        </div>
+      </div>
+      <p style="margin-top: 1rem;"><strong>बस यति हो। सजिलो छ। सिधा छ। झन्झट छैन।</strong></p>
+    </section>
+
     <section class="how-to" style="animation-delay: 0.8s;">
       <h2>📖 How to Use FixMyRoom</h2>
       <ol>
@@ -64,53 +256,40 @@
     </section>
 
     <section class="founder-note" style="animation-delay: 1s;">
-      <h2>🧍‍♂️ Real Talk from the Guy Who Built This</h2>
-      <p>I didn’t study IT. I didn’t go to bootcamp. I didn’t even know what “npm install” meant — I thought it was a food delivery command. 🍜</p>
-      <p>My room was leaking like it owed rent. 💧 My socket was sparking like it wanted to DJ. 🔌🎶</p>
-      <p>I called people. They said “coming soon.” That was last year. 📅</p>
-      <p>I asked around. Everyone had advice but no one had a screwdriver. 🪛</p>
-      <p>So I did what every desperate Nepali does — I googled. Then I cried. Then I googled again. 😭🔍</p>
-      <p>I stayed up nights. I broke things. I fixed them. Then broke them again. 💻🔥</p>
-      <p>I built FixMyRoom. It’s not fancy. It’s not funded. But it works. Like your uncle’s 20-year-old fan — noisy, but loyal. 🧓🌀</p>
-      <p>You open it. You ask for help. A real worker shows up. No drama. No “sir, tomorrow pakka.” Just action. 🛠️</p>
-      <p>No middlemen. No fake promises. No BS. Just me, one guy, one mission: fix the stuff that makes you want to scream into your pillow. 😤🛏️</p>
-      <p>If you’re the kind of person who thinks duct tape is a solution to everything — this is for you. 🩹</p>
-      <p>If you’ve ever tried to fix a geyser with a spoon and hope — this is for you. 🥄🔥</p>
-      <p>If your DIY project turned into a WTF moment — this is for you. 🧱😵</p>
-      <p><strong>Use it. Share it. Help me keep it alive. Or go back to watching YouTube tutorials at 2am while your ceiling drips on your forehead. 😅☔</strong></p>
-
-      <hr />
-
-      <h2>🇳🇵 नेपालीमा केही कुरा</h2>
-      <p>म IT बाट होइन। कम्प्युटर पढेको छैन। एप बनाउने योजना थिएन।</p>
-      <p>तर जीवनमा धेरै पटक म अड्किएँ। कोठा चुहियो, तार चिस्कियो, म मर्मतको खोजीमा थिएँ। कोही आएन।</p>
-      <p>त्यसैले मैले आफैँ बनाउने निर्णय गरेँ।</p>
-      <p>गुगल गरेँ, गल्ती गरेँ, फेरि प्रयास गरेँ। रातभर जागा बसेँ। हार मानिनँ।</p>
-      <p>अब FixMyRoom छ।</p>
-      <p>यो परिपूर्ण छैन। तर काम गर्छ।</p>
-      <p>तपाईं खोल्नुहोस्, अनुरोध गर्नुहोस्, कामदार आउँछ।</p>
-      <p>बीचमा कोही छैन। झुटो आश्वासन छैन। विज्ञापन छैन।</p>
-      <p><strong>यो सबैका लागि निःशुल्क हो।</strong></p>
-      <p><strong>तपाईं पनि जोडिनुहोस्। प्रयोग गर्नुहोस्। साथीलाई भन्नुहोस्। अनि टेपले सब थाम्न खोज्ने बानी छोड्नुहोस्। 😆🛠️</strong></p>
+      <h2>🧍‍♂️ एक जना मान्छेले बनाएको एप</h2>
+      <p>FixMyRoom कुनै कम्पनीले बनाएको होइन। यो एक जना मान्छेले बनाएको हो — म, Pratik।</p>
+      <p>म IT पढेको छैन। मसँग टिम छैन। मसँग बजेट छैन। तर मसँग हिम्मत छ।</p>
+      <p>मेरो कोठा चुहिन्थ्यो। बिजुली चिस्किन्थ्यो। म कामदार खोज्दै गाह्रोमा थिएँ।</p>
+      <p>कसैले फोन उठाएन। कसैले “पक्का आउँछु” भन्यो — तर कहिल्यै आएन।</p>
+      <p>गुगल गरेँ। ट्युटोरियल हेरेँ। रातभर जागा बसेँ। कोड लेखेँ। गल्ती गरेँ। फेरि लेखेँ।</p>
+      <p>FixMyRoom बन्यो। यो परिपूर्ण छैन। तर काम गर्छ।</p>
+      <p>अब तपाईं ग्राहक हुनुहुन्छ भने — सिधा अनुरोध पठाउन सक्नुहुन्छ।</p>
+      <p>तपाईं कामदार हुनुहुन्छ भने — सिधा काम पाउन सक्नुहुन्छ।</p>
+      <p><strong>यो एप सबैका लागि निःशुल्क छ।</strong></p>
+      <p><strong>म एक्लो छु, तर तपाईंको साथले यो एप बाँच्नेछ।</strong></p>
+      <p><strong>साथीलाई भन्नुहोस्। शेयर गर्नुहोस्। तपाईंको कोठा सुधार्न मद्दत गर्नुहोस्।</strong></p>
     </section>
 
     <section class="fail-gallery" style="animation-delay: 1.2s;">
       <h2>💥 Fix Fail Gallery</h2>
-      <p>We’ve all tried to fix things and made them worse. Here’s a tribute to those glorious fails:</p>
       <ul>
-        <li>🔌 Used a fork to fix a socket. Now the fork is part of the socket.</li>
-        <li>🚿 Tried to seal a leak with chewing gum. It held... until it didn’t.</li>
-        <li>🧯 Replaced a fuse with a coin. The coin melted. So did the wires.</li>
-        <li>🪟 Patched a broken window with cardboard. Rain laughed. Wind cheered.</li>
-        <li>🧰 Fixed a fan blade with tape. It flew off mid-spin like a ninja star.</li>
+        <li>Paint spilled everywhere 🎨</li>
+        <li>Pipe burst in kitchen 🚰</li>
+        <li>Door installation failed 🚪</li>
       </ul>
-      <p><strong>Got your own fail? Share it with us. Let’s laugh, learn, and fix it right next time.</strong></p>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>Made with ❤️ in Nepal by Pratik</p>
   </footer>
+
+  <!-- 🖼 Floating 3-picture gallery -->
+  <div class="floating-gallery">
+    <img src="public/pic1.jpg" alt="Gallery Pic 1">
+    <img src="public/pic2.jpg" alt="Gallery Pic 2">
+    <img src="public/pic3.jpg" alt="Gallery Pic 3">
+  </div>
 
   <!-- 🌐 Floating Social Buttons -->
   <div class="floating-buttons">

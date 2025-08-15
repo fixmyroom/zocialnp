@@ -89,7 +89,7 @@ body {
 }
 
 .founder-note p strong {
-  color: yellow;
+  color: black;
 }
 
 /* 💥 Fix Fail Gallery */
@@ -155,6 +155,47 @@ body {
   color: blue;
 }
 
+/* 🎨 Floating Picture Gallery */
+.floating-gallery {
+  display: flex;
+  gap: 15px;
+  background: linear-gradient(135deg, #ff9800, #ff5722, #ff4081);
+  padding: 15px;
+  border: 5px solid white;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  animation: floaty 4s ease-in-out infinite, borderGlow 3s linear infinite;
+}
+
+.floating-gallery img {
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-gallery img:hover {
+  transform: rotate(5deg) scale(1.15);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -10px); }
+}
+
+@keyframes borderGlow {
+  0% { box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722, 0 0 30px #ff4081; }
+  50% { box-shadow: 0 0 20px #ff4081, 0 0 30px #ff9800, 0 0 40px #ff5722; }
+  100% { box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722, 0 0 30px #ff4081; }
+}
+
 /* 📱 Mobile styles */
 @media (max-width: 600px) {
   .site-header h1 {
@@ -210,5 +251,10 @@ body {
     height: 45px;
     font-size: 1.8rem;
     line-height: 45px;
+  }
+
+  /* Hide gallery on mobile */
+  .floating-gallery {
+    display: none;
   }
 }
