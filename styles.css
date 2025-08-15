@@ -33,14 +33,20 @@ body {
   font-size: 1.2rem;
 }
 
-/* Sections */
-.app-section, .how-to, .founder-note {
+/* 📦 Sections */
+.app-section,
+.how-to,
+.founder-note,
+.fail-gallery {
   padding: 2rem;
   margin: 1rem auto;
   max-width: 800px;
 }
 
-.app-section h2, .how-to h2, .founder-note h2 {
+.app-section h2,
+.how-to h2,
+.founder-note h2,
+.fail-gallery h2 {
   color: green;
   font-size: 1.8rem;
   margin-bottom: 1rem;
@@ -64,6 +70,7 @@ body {
   transform: scale(1.05);
 }
 
+/* 📖 How-to list */
 .how-to ol {
   padding-left: 1.5rem;
   margin-bottom: 1rem;
@@ -78,10 +85,29 @@ body {
   background-color: black;
   color: white;
   border-left: 8px solid orange;
+  border-radius: 8px;
 }
 
 .founder-note p strong {
   color: yellow;
+}
+
+/* 💥 Fix Fail Gallery */
+.fail-gallery {
+  background-color: #fff8e1;
+  color: #000;
+  border-left: 8px solid red;
+  border-radius: 8px;
+}
+
+.fail-gallery ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.fail-gallery li {
+  margin-bottom: 0.5rem;
+  font-style: italic;
 }
 
 /* ✅ Footer */
@@ -139,12 +165,18 @@ body {
     font-size: 1rem;
   }
 
-  .app-section, .how-to, .founder-note {
+  .app-section,
+  .how-to,
+  .founder-note,
+  .fail-gallery {
     padding: 1rem;
     margin: 0.5rem;
   }
 
-  .app-section h2, .how-to h2, .founder-note h2 {
+  .app-section h2,
+  .how-to h2,
+  .founder-note h2,
+  .fail-gallery h2 {
     font-size: 1.5rem;
   }
 
