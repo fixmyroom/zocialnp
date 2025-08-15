@@ -106,14 +106,17 @@
     }
 
     function toggleGallery(){
-      const gallery=document.querySelector('.floating-gallery');
+      const gallery = document.querySelector('.floating-gallery');
       gallery.classList.toggle('minimized');
-      const btn=gallery.querySelector('.minimize-btn');
+      const btn = gallery.querySelector('.minimize-btn');
       btn.textContent = gallery.classList.contains('minimized') ? '+' : '−';
     }
 
     window.onload = function(){
       if(localStorage.getItem('darkMode')==='true') document.body.classList.add('dark-mode');
+      // Initialize gallery button
+      const galleryBtn = document.querySelector('.floating-gallery .minimize-btn');
+      if(galleryBtn) galleryBtn.textContent = document.querySelector('.floating-gallery').classList.contains('minimized') ? '+' : '−';
     };
   </script>
 </head>
