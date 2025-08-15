@@ -10,12 +10,9 @@
 
   <style>
     /* 🌙 Dark mode */
-    body.dark-mode {
-      background-color: #111;
-      color: #eee;
-    }
+    body.dark-mode { background-color: #111; color: #eee; }
 
-    /* 🔲 Header with fade-in */
+    /* 🔲 Header */
     .site-header {
       background-color: black;
       color: white;
@@ -23,12 +20,7 @@
       padding: 2rem;
       animation: fadeIn 1s ease-in-out;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     .logo { width: 100px; margin-bottom: 1rem; }
     .site-header h1 { font-size: 2.5rem; margin: 0.5rem 0; }
     .site-header p { font-size: 1.2rem; }
@@ -40,11 +32,8 @@
       max-width: 800px;
       animation: fadeIn 1s ease forwards;
     }
-
     .app-section h2, .how-to h2, .founder-note h2, .fail-gallery h2 {
-      color: green;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      color: green; font-size: 1.8rem; margin-bottom: 1rem;
     }
 
     /* Buttons */
@@ -59,11 +48,7 @@
       font-weight: bold;
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
-
-    .btn:hover {
-      background-color: orange;
-      transform: scale(1.05);
-    }
+    .btn:hover { background-color: orange; transform: scale(1.05); }
 
     /* How-to lists */
     .how-to ol { padding-left: 1.5rem; margin-bottom: 1rem; }
@@ -83,77 +68,70 @@
 
     /* Floating social buttons */
     .floating-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
+      position: fixed; bottom: 20px; right: 20px;
+      display: flex; flex-direction: column; gap: 10px; z-index: 1000;
     }
     .social-btn {
-      width: 50px;
-      height: 50px;
-      font-size: 2rem;
-      text-align: center;
-      line-height: 50px;
-      border-radius: 50%;
-      background-color: white;
+      width: 50px; height: 50px; font-size: 2rem;
+      text-align: center; line-height: 50px;
+      border-radius: 50%; background-color: white;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .social-btn:hover { transform: scale(1.1); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
-    .whatsapp { color: green; }
-    .facebook { color: blue; }
+    .whatsapp { color: green; } .facebook { color: blue; }
 
     /* 🎨 Floating 3-picture gallery */
     .floating-gallery {
-      display: flex;
-      gap: 15px;
-      background: white;
-      padding: 15px;
-      border: 4px solid #ff9800;
-      border-radius: 20px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      z-index: 998;
+      display: flex; gap: 10px;
+      background: white; padding: 10px;
+      border: 3px solid #ff9800; border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      position: fixed; bottom: 100px; right: 20px; z-index: 998;
       animation: floaty 3s ease-in-out infinite, spinHue 6s linear infinite;
+      align-items: center;
     }
     .floating-gallery img {
-      width: 110px;
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      width: 70px; height: auto; border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .floating-gallery img:hover {
-      transform: rotate(-3deg) scale(1.15);
-      box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
+      transform: rotate(-3deg) scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
     }
-    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .minimize-btn {
+      background: #ff9800;
+      border: none;
+      color: white;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 5px;
+    }
+    .floating-gallery.minimized img { display: none; }
+
+    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
     @keyframes spinHue { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
 
     body.dark-mode .floating-gallery {
-      background: #222;
-      border-color: gold;
-      box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+      background: #222; border-color: gold; box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
     }
 
     /* Mobile responsive */
     @media (max-width: 600px) {
-      .site-header h1 { font-size: 2rem; }
-      .site-header p { font-size: 1rem; }
+      .site-header h1 { font-size: 2rem; } .site-header p { font-size: 1rem; }
       .app-section, .how-to, .founder-note, .fail-gallery { padding: 1rem; margin: 0.5rem; }
       .app-section h2, .how-to h2, .founder-note h2, .fail-gallery h2 { font-size: 1.5rem; }
       .btn { width: 100%; text-align: center; padding: 1rem; font-size: 1rem; }
-      .logo { width: 80px; }
-      .how-to ol { padding-left: 1rem; }
+      .logo { width: 80px; } .how-to ol { padding-left: 1rem; }
       .site-footer { font-size: 0.9rem; padding: 0.8rem; }
       .floating-buttons { bottom: 15px; right: 15px; }
       .social-btn { width: 45px; height: 45px; font-size: 1.8rem; line-height: 45px; }
-      .floating-gallery { display: none; }
+      .floating-gallery { bottom: 80px; right: 15px; flex-wrap: wrap; gap:5px; }
+      .floating-gallery img { width: 50px; }
     }
   </style>
 
@@ -162,6 +140,14 @@
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     }
+
+    function toggleGallery() {
+      const gallery = document.querySelector('.floating-gallery');
+      gallery.classList.toggle('minimized');
+      const btn = gallery.querySelector('.minimize-btn');
+      btn.textContent = gallery.classList.contains('minimized') ? '+' : '−';
+    }
+
     window.onload = function () {
       if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
@@ -178,6 +164,7 @@
   </header>
 
   <main>
+    <!-- App Sections -->
     <section class="app-section" style="animation-delay: 0.2s;">
       <h2>🚀 Try the Web App</h2>
       <p>No downloads. No nonsense. Just open and request a repair.</p>
@@ -186,22 +173,22 @@
 
     <section class="app-section" style="animation-delay: 0.4s;">
       <h2>📲 Download the Android App</h2>
-      <p>Prefer using an app? Grab the APK. No Play Store. No ads. Just the tool you need.</p>
+      <p>Prefer using an app? Grab the APK. No Play Store. No ads.</p>
       <a href="https://fixmyroom.github.io/zocialnp/public/fixmyroom.apk" class="btn" download>Download APK</a>
     </section>
 
     <section class="app-section" style="animation-delay: 0.6s;">
       <h2>📥 Direct APK Download</h2>
-      <p>Click the image below to download the Android app instantly:</p>
       <a href="https://fixmyroom.github.io/zocialnp/public/fixmyroom.apk" download>
-        <img src="public/download-apk.png" alt="Download FixMyRoom APK" style="width:200px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2);" />
+        <img src="public/download-apk.png" alt="Download APK" style="width:200px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2);" />
       </a>
     </section>
 
+    <!-- How-to Sections -->
     <section class="how-to" style="animation-delay: 0.7s;">
       <h2>📘 FixMyRoom प्रयोग गर्ने तरिका</h2>
-      <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
-        <div style="flex: 1; min-width: 280px;">
+      <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+        <div style="flex:1; min-width:280px;">
           <h3>📲 Android प्रयोगकर्ता</h3>
           <ol>
             <li>APK डाउनलोड गर्नुहोस्</li>
@@ -213,7 +200,7 @@
             <li>Request पठाउनुहोस्</li>
           </ol>
         </div>
-        <div style="flex: 1; min-width: 280px;">
+        <div style="flex:1; min-width:280px;">
           <h3>🍎 iPhone प्रयोगकर्ता</h3>
           <ol>
             <li>Safari मा Web App खोल्नुहोस्</li>
@@ -224,7 +211,7 @@
             <li>Request पठाउनुहोस्</li>
           </ol>
         </div>
-        <div style="flex: 1; min-width: 280px;">
+        <div style="flex:1; min-width:280px;">
           <h3>🧰 कामदार (Painter, Plumber, आदि)</h3>
           <ol>
             <li>एप वा Web App खोल्नुहोस्</li>
@@ -239,7 +226,7 @@
           </ol>
         </div>
       </div>
-      <p style="margin-top: 1rem;"><strong>बस यति हो। सजिलो छ। सिधा छ। झन्झट छैन।</strong></p>
+      <p style="margin-top:1rem;"><strong>बस यति हो। सजिलो छ। सिधा छ। झन्झट छैन।</strong></p>
     </section>
 
     <section class="how-to" style="animation-delay: 0.8s;">
@@ -260,14 +247,8 @@
       <p>FixMyRoom कुनै कम्पनीले बनाएको होइन। यो एक जना मान्छेले बनाएको हो — म, Pratik।</p>
       <p>म IT पढेको छैन। मसँग टिम छैन। मसँग बजेट छैन। तर मसँग हिम्मत छ।</p>
       <p>मेरो कोठा चुहिन्थ्यो। बिजुली चिस्किन्थ्यो। म कामदार खोज्दै गाह्रोमा थिएँ।</p>
-      <p>कसैले फोन उठाएन। कसैले “पक्का आउँछु” भन्यो — तर कहिल्यै आएन।</p>
-      <p>गुगल गरेँ। ट्युटोरियल हेरेँ। रातभर जागा बसेँ। कोड लेखेँ। गल्ती गरेँ। फेरि लेखेँ।</p>
       <p>FixMyRoom बन्यो। यो परिपूर्ण छैन। तर काम गर्छ।</p>
-      <p>अब तपाईं ग्राहक हुनुहुन्छ भने — सिधा अनुरोध पठाउन सक्नुहुन्छ।</p>
-      <p>तपाईं कामदार हुनुहुन्छ भने — सिधा काम पाउन सक्नुहुन्छ।</p>
       <p><strong>यो एप सबैका लागि निःशुल्क छ।</strong></p>
-      <p><strong>म एक्लो छु, तर तपाईंको साथले यो एप बाँच्नेछ।</strong></p>
-      <p><strong>साथीलाई भन्नुहोस्। शेयर गर्नुहोस्। तपाईंको कोठा सुधार्न मद्दत गर्नुहोस्।</strong></p>
     </section>
 
     <section class="fail-gallery" style="animation-delay: 1.2s;">
@@ -284,21 +265,18 @@
     <p>Made with ❤️ in Nepal by Pratik</p>
   </footer>
 
-  <!-- 🖼 Floating 3-picture gallery -->
-  <div class="floating-gallery">
+  <!-- 🖼 Floating Gallery with Minimize Button -->
+  <div class="floating-gallery minimized">
     <img src="public/pic1.jpg" alt="Gallery Pic 1">
     <img src="public/pic2.jpg" alt="Gallery Pic 2">
     <img src="public/pic3.jpg" alt="Gallery Pic 3">
+    <button class="minimize-btn" onclick="toggleGallery()">+</button>
   </div>
 
-  <!-- 🌐 Floating Social Buttons -->
+  <!-- 🌐 Social Buttons -->
   <div class="floating-buttons">
-    <a href="https://wa.me/9779851151294" class="social-btn whatsapp" target="_blank" aria-label="Chat on WhatsApp">
-      🟢
-    </a>
-    <a href="https://www.facebook.com/people/ZocialPainter/61578207554465/" class="social-btn facebook" target="_blank" aria-label="Visit Facebook">
-      🔵
-    </a>
+    <a href="https://wa.me/9779851151294" class="social-btn whatsapp" target="_blank" aria-label="Chat on WhatsApp">🟢</a>
+    <a href="https://www.facebook.com/people/ZocialPainter/61578207554465/" class="social-btn facebook" target="_blank" aria-label="Visit Facebook">🔵</a>
   </div>
 </body>
 </html>
