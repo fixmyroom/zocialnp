@@ -9,149 +9,111 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet" />
 
   <style>
-    /* 🌙 Dark mode */
-    body.dark-mode { background-color: #111; color: #eee; }
+    body { margin:0; font-family:'Segoe UI',sans-serif; background:#fff; color:#000; }
+    body.dark-mode { background:#111; color:#eee; }
 
-    /* 🔲 Header */
     .site-header {
-      background-color: black;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      animation: fadeIn 1s ease-in-out;
+      background:black; color:white; text-align:center; padding:2rem;
+      animation:fadeIn 1s ease-in-out;
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    .logo { width: 100px; margin-bottom: 1rem; }
-    .site-header h1 { font-size: 2.5rem; margin: 0.5rem 0; }
-    .site-header p { font-size: 1.2rem; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
+    .logo { width:100px; margin-bottom:1rem; }
+    .site-header h1 { font-size:2.5rem; margin:0.5rem 0; }
+    .site-header p { font-size:1.2rem; }
 
-    /* Sections */
     .app-section, .how-to, .founder-note, .fail-gallery {
-      padding: 2rem;
-      margin: 1rem auto;
-      max-width: 800px;
-      animation: fadeIn 1s ease forwards;
+      padding:2rem; margin:1rem auto; max-width:800px; animation:fadeIn 1s ease forwards;
     }
     .app-section h2, .how-to h2, .founder-note h2, .fail-gallery h2 {
-      color: green; font-size: 1.8rem; margin-bottom: 1rem;
+      color:green; font-size:1.8rem; margin-bottom:1rem;
     }
 
-    /* Buttons */
     .btn {
-      display: inline-block;
-      background-color: red;
-      color: white;
-      padding: 0.8rem 1.2rem;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 1rem;
-      font-weight: bold;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      display:inline-block; background:red; color:white;
+      padding:0.8rem 1.2rem; text-decoration:none; border-radius:5px;
+      margin-top:1rem; font-weight:bold; transition:0.3s ease;
     }
-    .btn:hover { background-color: orange; transform: scale(1.05); }
+    .btn:hover { background:orange; transform:scale(1.05); }
 
-    /* How-to lists */
-    .how-to ol { padding-left: 1.5rem; margin-bottom: 1rem; }
-    .how-to li { margin-bottom: 0.5rem; }
+    .how-to ol { padding-left:1.5rem; margin-bottom:1rem; }
+    .how-to li { margin-bottom:0.5rem; }
 
-    /* Founder note */
-    .founder-note { background-color: black; color: white; border-left: 8px solid orange; border-radius: 8px; }
-    .founder-note p strong { color: black; }
+    .founder-note { background:black; color:white; border-left:8px solid orange; border-radius:8px; }
+    .founder-note p strong { color:black; }
 
-    /* Fail gallery */
-    .fail-gallery { background-color: #fff8e1; color: #000; border-left: 8px solid red; border-radius: 8px; }
-    .fail-gallery ul { padding-left: 1.5rem; margin-bottom: 1rem; }
-    .fail-gallery li { margin-bottom: 0.5rem; font-style: italic; }
+    .fail-gallery { background:#fff8e1; color:#000; border-left:8px solid red; border-radius:8px; }
+    .fail-gallery ul { padding-left:1.5rem; margin-bottom:1rem; }
+    .fail-gallery li { margin-bottom:0.5rem; font-style:italic; }
 
-    /* Footer */
-    .site-footer { background-color: green; color: white; text-align: center; padding: 1rem; font-size: 1rem; }
+    .site-footer { background:green; color:white; text-align:center; padding:1rem; font-size:1rem; }
 
-    /* Floating social buttons */
     .floating-buttons {
-      position: fixed; bottom: 20px; right: 20px;
-      display: flex; flex-direction: column; gap: 10px; z-index: 1000;
+      position:fixed; bottom:20px; right:20px;
+      display:flex; flex-direction:column; gap:10px; z-index:1000;
     }
     .social-btn {
-      width: 50px; height: 50px; font-size: 2rem;
-      text-align: center; line-height: 50px;
-      border-radius: 50%; background-color: white;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width:50px; height:50px; font-size:2rem; text-align:center; line-height:50px;
+      border-radius:50%; background:white;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2); transition:0.3s ease;
     }
-    .social-btn:hover { transform: scale(1.1); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
-    .whatsapp { color: green; } .facebook { color: blue; }
+    .social-btn:hover { transform:scale(1.1); box-shadow:0 6px 12px rgba(0,0,0,0.3); }
+    .whatsapp { color:green; } .facebook { color:blue; }
 
-    /* 🎨 Floating 3-picture gallery */
+    /* Floating gallery */
     .floating-gallery {
-      display: flex; gap: 10px;
-      background: white; padding: 10px;
-      border: 3px solid #ff9800; border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-      position: fixed; bottom: 100px; right: 20px; z-index: 998;
-      animation: floaty 3s ease-in-out infinite, spinHue 6s linear infinite;
-      align-items: center;
+      display:flex; gap:10px; background:white; padding:5px;
+      border:2px solid #ff9800; border-radius:15px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.3);
+      position:fixed; bottom:90px; right:20px; z-index:999;
+      align-items:center; transition:all 0.3s ease;
     }
     .floating-gallery img {
-      width: 70px; height: auto; border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      width:60px; height:60px; border-radius:10px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.3); transition:0.3s ease;
     }
     .floating-gallery img:hover {
-      transform: rotate(-3deg) scale(1.1);
-      box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
+      transform:scale(1.1); box-shadow:0 8px 20px rgba(255,152,0,0.6);
     }
     .minimize-btn {
-      background: #ff9800;
-      border: none;
-      color: white;
-      border-radius: 50%;
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-left: 5px;
+      background:#ff9800; border:none; color:white;
+      border-radius:50%; width:25px; height:25px; cursor:pointer; font-weight:bold;
     }
-    .floating-gallery.minimized img { display: none; }
-
-    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-    @keyframes spinHue { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }
+    .floating-gallery.minimized { width:35px; height:35px; padding:0; overflow:hidden; }
+    .floating-gallery.minimized img { display:none; }
 
     body.dark-mode .floating-gallery {
-      background: #222; border-color: gold; box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
+      background:#222; border-color:gold; box-shadow:0 10px 20px rgba(255,215,0,0.4);
     }
 
-    /* Mobile responsive */
-    @media (max-width: 600px) {
-      .site-header h1 { font-size: 2rem; } .site-header p { font-size: 1rem; }
-      .app-section, .how-to, .founder-note, .fail-gallery { padding: 1rem; margin: 0.5rem; }
-      .app-section h2, .how-to h2, .founder-note h2, .fail-gallery h2 { font-size: 1.5rem; }
-      .btn { width: 100%; text-align: center; padding: 1rem; font-size: 1rem; }
-      .logo { width: 80px; } .how-to ol { padding-left: 1rem; }
-      .site-footer { font-size: 0.9rem; padding: 0.8rem; }
-      .floating-buttons { bottom: 15px; right: 15px; }
-      .social-btn { width: 45px; height: 45px; font-size: 1.8rem; line-height: 45px; }
-      .floating-gallery { bottom: 80px; right: 15px; flex-wrap: wrap; gap:5px; }
-      .floating-gallery img { width: 50px; }
+    @media (max-width:600px) {
+      .site-header h1{font-size:2rem;} .site-header p{font-size:1rem;}
+      .app-section,.how-to,.founder-note,.fail-gallery{padding:1rem;margin:0.5rem;}
+      .app-section h2,.how-to h2,.founder-note h2,.fail-gallery h2{font-size:1.5rem;}
+      .btn{width:100%; padding:1rem; font-size:1rem;}
+      .logo{width:80px;} .how-to ol{padding-left:1rem;}
+      .site-footer{font-size:0.9rem; padding:0.8rem;}
+      .floating-buttons{bottom:15px; right:15px;}
+      .social-btn{width:45px; height:45px; font-size:1.8rem; line-height:45px;}
+      .floating-gallery{bottom:70px; right:15px; flex-wrap:wrap; gap:5px;}
+      .floating-gallery img{width:50px;}
     }
   </style>
 
   <script>
-    function toggleDarkMode() {
+    function toggleDarkMode(){
       document.body.classList.toggle('dark-mode');
       localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     }
 
-    function toggleGallery() {
-      const gallery = document.querySelector('.floating-gallery');
+    function toggleGallery(){
+      const gallery=document.querySelector('.floating-gallery');
       gallery.classList.toggle('minimized');
-      const btn = gallery.querySelector('.minimize-btn');
+      const btn=gallery.querySelector('.minimize-btn');
       btn.textContent = gallery.classList.contains('minimized') ? '+' : '−';
     }
 
-    window.onload = function () {
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-      }
+    window.onload = function(){
+      if(localStorage.getItem('darkMode')==='true') document.body.classList.add('dark-mode');
     };
   </script>
 </head>
@@ -165,19 +127,19 @@
 
   <main>
     <!-- App Sections -->
-    <section class="app-section" style="animation-delay: 0.2s;">
+    <section class="app-section">
       <h2>🚀 Try the Web App</h2>
       <p>No downloads. No nonsense. Just open and request a repair.</p>
       <a href="https://zocialfix.vercel.app" class="btn" target="_blank">Open Web App</a>
     </section>
 
-    <section class="app-section" style="animation-delay: 0.4s;">
+    <section class="app-section">
       <h2>📲 Download the Android App</h2>
       <p>Prefer using an app? Grab the APK. No Play Store. No ads.</p>
       <a href="https://fixmyroom.github.io/zocialnp/public/fixmyroom.apk" class="btn" download>Download APK</a>
     </section>
 
-    <section class="app-section" style="animation-delay: 0.6s;">
+    <section class="app-section">
       <h2>📥 Direct APK Download</h2>
       <a href="https://fixmyroom.github.io/zocialnp/public/fixmyroom.apk" download>
         <img src="public/download-apk.png" alt="Download APK" style="width:200px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2);" />
@@ -185,7 +147,7 @@
     </section>
 
     <!-- How-to Sections -->
-    <section class="how-to" style="animation-delay: 0.7s;">
+    <section class="how-to">
       <h2>📘 FixMyRoom प्रयोग गर्ने तरिका</h2>
       <div style="display:flex; flex-wrap:wrap; gap:2rem;">
         <div style="flex:1; min-width:280px;">
@@ -229,7 +191,7 @@
       <p style="margin-top:1rem;"><strong>बस यति हो। सजिलो छ। सिधा छ। झन्झट छैन।</strong></p>
     </section>
 
-    <section class="how-to" style="animation-delay: 0.8s;">
+    <section class="how-to">
       <h2>📖 How to Use FixMyRoom</h2>
       <ol>
         <li>Open the web app or install the APK</li>
@@ -242,7 +204,7 @@
       <p>Simple. Honest. Built for Nepal.</p>
     </section>
 
-    <section class="founder-note" style="animation-delay: 1s;">
+    <section class="founder-note">
       <h2>🧍‍♂️ एक जना मान्छेले बनाएको एप</h2>
       <p>FixMyRoom कुनै कम्पनीले बनाएको होइन। यो एक जना मान्छेले बनाएको हो — म, Pratik।</p>
       <p>म IT पढेको छैन। मसँग टिम छैन। मसँग बजेट छैन। तर मसँग हिम्मत छ।</p>
@@ -251,7 +213,7 @@
       <p><strong>यो एप सबैका लागि निःशुल्क छ।</strong></p>
     </section>
 
-    <section class="fail-gallery" style="animation-delay: 1.2s;">
+    <section class="fail-gallery">
       <h2>💥 Fix Fail Gallery</h2>
       <ul>
         <li>Paint spilled everywhere 🎨</li>
@@ -265,7 +227,7 @@
     <p>Made with ❤️ in Nepal by Pratik</p>
   </footer>
 
-  <!-- 🖼 Floating Gallery with Minimize Button -->
+  <!-- Floating Gallery -->
   <div class="floating-gallery minimized">
     <img src="public/pic1.jpg" alt="Gallery Pic 1">
     <img src="public/pic2.jpg" alt="Gallery Pic 2">
@@ -273,7 +235,7 @@
     <button class="minimize-btn" onclick="toggleGallery()">+</button>
   </div>
 
-  <!-- 🌐 Social Buttons -->
+  <!-- Social Buttons -->
   <div class="floating-buttons">
     <a href="https://wa.me/9779851151294" class="social-btn whatsapp" target="_blank" aria-label="Chat on WhatsApp">🟢</a>
     <a href="https://www.facebook.com/people/ZocialPainter/61578207554465/" class="social-btn facebook" target="_blank" aria-label="Visit Facebook">🔵</a>
